@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Guess{% endblock title %}
+{% block body %}
+
+<div class="container-fluid">
+<div class="heading container">
+    <h1>Guess the Number</h1>
+    <p>Guess the magician's secret number!</p>
+</div>
+<div class="container">
+    <div class="card p-2 m-4" style="width: 18rem;">
+        <img src="{% static 'magic_sm.png' %}" width="50%" alt="">
+        
+        <div class="card-body ">
+            <h5 class="card-title">Guess Number (1-5)</h5>
+            <form class="row g-3" action="/guess/" method="post">
+              {% csrf_token %}
+            <div class="col-auto">
+              <label for="inputPassword2" class="visually-hidden">Guess Number</label>
+              <input type="password" class="form-control" name="user"  id="inputPassword2" placeholder="Guess Number">
+            </div>
+
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary mb-3">Guess?</button>
+            </div>
+          </form>
+
+          <p class="card-text">Result -: <b>{{result}}</b></p>
+        </div>
+      </div>
+
+</div>
+
+</div>
+
+
+
+{% endblock body %}
+
+{% block js %}{% endblock js %}
